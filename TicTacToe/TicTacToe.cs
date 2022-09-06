@@ -51,6 +51,22 @@ namespace TicTacToe
             }
         }
 
+        private bool GameIsADraw
+        {
+            get
+            {
+                foreach (string item in this.board)
+                {
+                    if (item != "X" && item != "O")
+                    {
+                        return false;
+                    }
+                }
+
+                return true;
+            }
+        }
+
         private string CurrentPlayerSymbol
         {
             get
@@ -66,13 +82,13 @@ namespace TicTacToe
 
         public void Run()
         {
-            while (!this.GameHasWinner)
+            while (!this.GameHasWinner && !this.GameIsADraw)
             {
                 this.DisplayGameBoard();
 
                 this.GetFieldSelectionForCurrentPlayer();
 
-                if (!this.GameHasWinner)
+                if (!this.GameHasWinner && !this.GameIsADraw)
                 {
                     this.TogglePlayer();
                 }
@@ -81,7 +97,12 @@ namespace TicTacToe
             this.DisplayGameBoard();
 
             Console.WriteLine();
-            Console.WriteLine("Player {0} has won!", this.currentPlayer);
+
+            if (this.GameHasWinner)
+                Console.WriteLine("Player {0} has won!", this.currentPlayer);
+            else
+                Console.WriteLine("The game has ended in a draw!");
+
             Console.WriteLine("Press any key to reset the game");
             Console.ReadKey();
 
