@@ -106,6 +106,7 @@ namespace TicTacToe
             Console.WriteLine("Press any key to reset the game");
             Console.ReadKey();
 
+            this.TogglePlayer();
             this.ResetGameBoard();
             this.Run();
         }
