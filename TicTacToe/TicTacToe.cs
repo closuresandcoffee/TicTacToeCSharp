@@ -81,7 +81,7 @@ namespace TicTacToe
             this.DisplayGameBoard();
 
             Console.WriteLine();
-            Console.WriteLine("Player {0} has won!");
+            Console.WriteLine("Player {0} has won!", this.currentPlayer);
             Console.WriteLine("Press any key to reset the game");
             Console.ReadKey();
 
